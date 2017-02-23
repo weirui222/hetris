@@ -29,4 +29,4 @@ app.post('/score', function(req, res) {
 });
 
 //console.log("http://localhost:" + port);
-app.listen(port);
+app.listen(process.env.PORT || port);
