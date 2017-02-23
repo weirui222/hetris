@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Not Tetris</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div id="gameStartModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Instruction</h4>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Drag and drop shape to board.</li>
+            <li>3+ connected hexes will collapse.</li>
+            <li>Click the shape to rotate.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal"
+            id="startButton">Start</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- PlayBoard -->
+  <div class="text-center">
+    <canvas id="game" width="380px" height="650px" style="background: gray; margin-top: 7%;"></canvas>
+  </div>
+
+    <!-- Modal -->
+  <div id="gameOverModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Game Over</h4>
+        </div>
+        <div class="modal-body">
+          <h1>Score: <span id="finalscore"></span></h1>
+          <form action="/score" id='submit' method="POST">
+            <p>
+              <input type="text" name="userName" placeholder="Type your name" required>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </p>
+          </form>
+          <div id="rank">
+            <h3>Rank</h3>
+            <div class="container">
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">1</span><span id="name0" class="col-xs-4"></span><span id="score0" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">2</span><span id="name1" class="col-xs-4"></span><span id="score1" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">3</span><span id="name2" class="col-xs-4"></span><span id="score2" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">4</span><span id="name3" class="col-xs-4"></span><span id="score3" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">5</span><span id="name4" class="col-xs-4"></span><span id="score4" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">6</span><span id="name5" class="col-xs-4"></span><span id="score5" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">7</span><span id="name6" class="col-xs-4"></span><span id="score6" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">8</span><span id="name7" class="col-xs-4"></span><span id="score7" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">9</span><span id="name8" class="col-xs-4"></span><span id="score8" class="col-xs-3"></span></div>
+              <div class="row"><span class="col-xs-3 col-xs-offset-1">10</span><span id="name9" class="col-xs-4"></span><span id="score9" class="col-xs-3"></span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal"
+            id="restartButton">Restart</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="main.bundle.js"></script>
+
+</body>
+</html>

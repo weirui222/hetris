@@ -76,10 +76,12 @@
 
 	const shapesInWaitingBoxes = [
 	//{key: "first", bounds: [600, 700, 100, 200]},
-	{ key: "second", bounds: [115, 375, 375, 525] }];
+	{ key: "second", bounds: [140, 240, 350, 450] }];
 
 	var circleimg = new Image();
 	circleimg.src = "images/circle.png";
+
+	$("#rank").hide();
 
 	function drawCircle() {
 	  ctx.save();
@@ -140,6 +142,34 @@
 	  shapeInHand = whichShapeDidYouPick();
 	});
 
+	document.getElementById('submit').addEventListener('submit', function (event) {
+	  event.preventDefault();
+	  data = {
+	    score: score,
+	    name: event.target.userName.value
+	  };
+	  //console.log('data',data);
+	  fetch(`/score`, {
+	    method: "POST",
+	    headers: {
+	      'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify(data)
+	  }).then(res => {
+	    res.json().then(function (json) {
+	      console.log('res.json()', json);
+	      for (var i = 0; i < json.length; i++) {
+	        console.log('json[i].score', json[i].score, 'json[i].name', json[i].name);
+	        document.getElementById("score" + i).innerText = json[i].score;
+	        document.getElementById("name" + i).innerText = json[i].name;
+	      }
+	      return json;
+	    });
+	  });
+	  $("#rank").show();
+	});
+
 	document.addEventListener('mouseup', function (event) {
 	  pixels = hexHelper.subVector2(mouseCoords, hexHelper.boardOffset);
 	  if (shapeInHand && board.validDrop(pixels, shapeInHand)) {
@@ -147,7 +177,7 @@
 	    //console.log('hexes', hexes);
 	    hexes.forEach(hex => {
 	      score += board.removeThreePlus(hex);
-	      console.log('totlescore', score);
+	      //console.log('totlescore',score);
 	    });
 
 	    if (board.hasEmptySlots()) {
@@ -178,6 +208,7 @@
 	  shapesInWaiting.second = new Shape(ctx, 2);
 	  board.clear();
 	  score = 0;
+	  $("#rank").hide();
 	});
 
 	document.addEventListener('click', function (event) {
@@ -1768,7 +1799,7 @@
 	const neighborOffsets = [[1, -1, 0], [-1, 1, 0], [0, 1, -1], [0, -1, 1], [-1, 0, 1], [1, 0, -1]];
 
 	function Board(context) {
-	  this.boardSize = 3;
+	  this.boardSize = 1;
 	  this.slots = [];
 
 	  for (var x = -this.boardSize; x <= this.boardSize; x++) {
