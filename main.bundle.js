@@ -91,8 +91,9 @@
 	}
 
 	function drawScore() {
-	  ctx.font = "40px Arial";
-	  ctx.fillText(score.toString(), 170, 570);
+	  ctx.font = "50px Arial white";
+	  ctx.fillStyle = "#FFFFFF";
+	  ctx.fillText(score.toString(), 170, 600);
 	}
 
 	function drawShapesInWaiting() {
@@ -148,7 +149,7 @@
 	      score += board.removeThreePlus(hex);
 	      console.log('totlescore', score);
 	    });
-	    document.getElementById("score-value").innerText = score;
+
 	    if (board.hasEmptySlots()) {
 	      while (true) {
 	        shapesInWaiting[shapeFrom] = new Shape(ctx, board.getMaxValue());
@@ -177,7 +178,6 @@
 	  shapesInWaiting.second = new Shape(ctx, 2);
 	  board.clear();
 	  score = 0;
-	  document.getElementById("score-value").innerText = score;
 	});
 
 	document.addEventListener('click', function (event) {
