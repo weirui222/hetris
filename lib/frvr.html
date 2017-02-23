@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<!--
+	/**
+	* @author Chris Benjaminsen http://chrisbenjaminsen.com/ @benjaminsen
+	 */
+	/** @license
+		Hex FRVR 3.2.6
+		More info at http://frvr.com
+
+		Copyright (c) 2013+ FRVR ApS
+
+		All Rights Reserved!
+		FRVR is a registered trademark of FRVR ApS
+	*/
+	/**
+		Well hello there!
+
+		I see you are interested in the details of how this game was made!
+		It's written using a custom HTML5 engine build around PixiJS.
+
+		While I can't tell you more on the how, there is much more on the why to be find at
+		http://blog.chrisbenjaminsen.com where I write frequent status updates on the games I build
+		under the FRVR brand - - including a 100% honest track record of money earned and spend.
+
+		Hack on!
+		Chris Benjaminsen
+		chrisbenjaminsen.com
+
+		- - - - - - - - - - - - - -
+
+		Hex FRVR would not be possible without the following open source projects:
+
+		pixi.js - v2.2.3
+		Copyright (c) 2012-2014, Mat Groves
+		http://goodboydigital.com/
+		pixi.js is licensed under the MIT License.
+		http://www.opensource.org/licenses/mit-license.php
+		Mat Groves http://matgroves.com/ @Doormat23
+	*/
+-->
+<html lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-title" content="Hex FRVR">
+	<meta name="theme-color" content="#202020">
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+	<meta name="google" content="notranslate" />
+
+	<link rel="canonical" href="http://hex.frvr.com/" />
+
+    	<link rel="alternate" hreflang="ar" href="http://hex.frvr.com/ar/" />
+
+    	<link rel="alternate" hreflang="da" href="http://hex.frvr.com/da/" />
+
+    	<link rel="alternate" hreflang="de" href="http://hex.frvr.com/de/" />
+
+    	<link rel="alternate" hreflang="el" href="http://hex.frvr.com/el/" />
+
+    	<link rel="alternate" hreflang="es" href="http://hex.frvr.com/es/" />
+
+    	<link rel="alternate" hreflang="es-MX" href="http://hex.frvr.com/es-MX/" />
+
+    	<link rel="alternate" hreflang="fi" href="http://hex.frvr.com/fi/" />
+
+    	<link rel="alternate" hreflang="fr" href="http://hex.frvr.com/fr/" />
+
+    	<link rel="alternate" hreflang="hi" href="http://hex.frvr.com/hi/" />
+
+    	<link rel="alternate" hreflang="id" href="http://hex.frvr.com/id/" />
+
+    	<link rel="alternate" hreflang="it" href="http://hex.frvr.com/it/" />
+
+    	<link rel="alternate" hreflang="ja" href="http://hex.frvr.com/ja/" />
+
+    	<link rel="alternate" hreflang="ko" href="http://hex.frvr.com/ko/" />
+
+    	<link rel="alternate" hreflang="ms" href="http://hex.frvr.com/ms/" />
+
+    	<link rel="alternate" hreflang="nb-NO" href="http://hex.frvr.com/nb-NO/" />
+
+    	<link rel="alternate" hreflang="nl" href="http://hex.frvr.com/nl/" />
+
+    	<link rel="alternate" hreflang="pl" href="http://hex.frvr.com/pl/" />
+
+    	<link rel="alternate" hreflang="pt" href="http://hex.frvr.com/pt/" />
+
+    	<link rel="alternate" hreflang="pt-BR" href="http://hex.frvr.com/pt-BR/" />
+
+    	<link rel="alternate" hreflang="ru" href="http://hex.frvr.com/ru/" />
+
+    	<link rel="alternate" hreflang="se" href="http://hex.frvr.com/se/" />
+
+    	<link rel="alternate" hreflang="th" href="http://hex.frvr.com/th/" />
+
+    	<link rel="alternate" hreflang="tr" href="http://hex.frvr.com/tr/" />
+
+    	<link rel="alternate" hreflang="vi" href="http://hex.frvr.com/vi/" />
+
+    	<link rel="alternate" hreflang="zh-Hans" href="http://hex.frvr.com/zh-Hans/" />
+
+    	<link rel="alternate" hreflang="zh-Hant" href="http://hex.frvr.com/zh-Hant/" />
+
+	<link rel="apple-touch-icon" sizes="60x60" href="./v/1487402554874/i/web/icon60x60.png"/>
+	<link rel="apple-touch-icon" sizes="76x76" href="./v/1487402554874/i/web/icon76x76.png"/>
+	<link rel="apple-touch-icon" sizes="120x120" href="./v/1487402554874/i/web/icon120x120.png"/>
+	<link rel="apple-touch-icon" sizes="196x196" href="./v/1487402554874/i/web/icon196x196.png"/>
+	<link rel="apple-touch-icon" sizes="256x256" href="./v/1487402554874/i/web/icon256x256.png"/>
+	<link rel="apple-touch-icon" sizes="1024x1024" href="./v/1487402554874/i/web/icon1024x1024.png"/>
+
+		<link rel="icon" type="image/png" href="./v/1487402554874/i/web/favicon.png" />
+
+	<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/kibjffjfmagcmicpmogpieelngkcfggn">
+
+	<link rel="me" href="https://twitter.com/FRVRGames">
+
+	<meta name="facebook_label" content="Play Hex FRVR - Free Hexagon Puzzle">
+
+	<meta property="og:title" content="Play Hex FRVR" />
+	<meta property="og:description" content="Hex FRVR is an easy to understand yet fun to master puzzle game." />
+	<meta property="og:site_name" content="Hex FRVR"/>
+	<meta property="og:url" content="http://hex.frvr.com/" />
+	<meta property="og:type" content="game" />
+	<meta property="og:locale" content="en" />
+	<meta property="og:image" content="https://hex.frvr.com/v/1487402554874/i/web/facebook02.png" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@FRVRGames" />
+	<meta name="twitter:creator" content="@Benjaminsen" />
+	<meta name="twitter:title" content="Play Hex FRVR - Free Hexagon Puzzle" />
+	<meta name="twitter:image" content="https://hex.frvr.com/v/1487402554874/i/web/twitter01.png" />
+	<meta name="twitter:description" content="Hex FRVR is an easy to understand yet fun to master puzzle game." />
+
+	<meta name="twitter:app:name:iphone" content="Hex FRVR" />
+	<meta name="twitter:app:id:iphone" content="1036010745" />
+	<meta name="twitter:app:name:ipad" content="Hex FRVR" />
+	<meta name="twitter:app:id:ipad" content="1036010745" />
+
+	<meta name="twitter:app:name:googleplay" content="Hex FRVR" />
+	<meta name="twitter:app:id:googleplay" content="com.frvr.hex" />
+
+	<meta name="description" content="Hex FRVR is an easy to understand yet fun to master puzzle game.">
+	<meta name="keywords" content="Hex,Hexagon,Puzzle,Free,Online,Game,Play">
+
+	<title>Play Hex FRVR - Hexagon Puzzle Game</title>
+	<style>
+		body {
+			background:#c8c8c8;
+			overflow:hidden;
+			position:fixed;
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			border:0px;padding:0px;margin:0px;
+			width:100%;
+			height:100%;
+		}
+
+		preloader{
+			display:block;
+			width:100%;
+			height:100%;
+			background: #EEEEEE;
+			background:radial-gradient(ellipse at center, #ffffff 1%,#c8c8c8 150%);
+			position:fixed;
+			z-index:5;
+		}
+
+		preloader canvas{
+			position: fixed;
+		}
+
+		preloader loadbar{
+			display:none;
+			position:fixed;
+			border:1px solid #afafaf;
+		}
+
+		preloader loadbar div{
+			display:block;
+			width:0%;
+			height:100%;
+			background-color:#007bb2;
+		}
+
+	</style>
+	</head>
+
+	<body>
+
+		<script>
+		var version = "3.2.6"
+		var gaPath = '/hex/' + version + '/';
+		var initTime = 1*new Date();
+
+			window.vpath = "./v/1487402554874/";
+
+			window.spath = "./v/1487402554874/external.js";
+			window.extsize = 257644;
+
+			//In seperate code block to load first & not trigger when JS is disabled
+			var preloader = document.createElement('preloader');document.body.appendChild(preloader);
+		</script>
+		<script>
+			//ie9 polyfill
+			if(!(window.console && console.log)) {
+				var fn = function(){};
+				console={log:fn,debug:fn,info:fn,warn:fn,error:fn};
+			}
+			Host = {
+    			Localize:{
+        		languages:
+    				["ar","da","de","el","es","es-MX","fi","fr","hi","id","it","ja","ko","ms","nb-NO","nl","pl","pt","pt-BR","ru","se","th","tr","vi","zh-Hans","zh-Hant"]
+
+    			}
+			};
+			(function(scope){
+				var isFBInstant = !!window.FBInstant;
+
+				if(isFBInstant){
+					gaPath += 'app/facebook_instant/';
+				}
+
+				var intChars = "()<=>?[]^`{|}"
+				var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/!#$&*-,.:;@()<=>?[]^`{|}"
+
+				function fromLong(stringNumber){
+
+					var number = 0;
+
+					for( var a=3;a>=0;a--){
+						number *= 74
+						number += chars.indexOf(stringNumber[a])
+					}
+
+					number = (number/100)-149932
+					return number
+				}
+				function fromFloat(stringNumber){
+
+					var number = 0;
+
+					for( var a=2;a>=0;a--){
+						number *= 74
+						number += chars.indexOf(stringNumber[a])
+					}
+
+					number = (number/100)-2026
+					return number
+				}
+
+				function fromUInt(str){
+					return intChars.indexOf(str[0])*88 + chars.indexOf(str[1])
+				}
+
+				scope.getCanvasFromFRVRVector = function(actions,cords){
+
+					var cordOffset = 0;
+					function getCord(){
+						var first = cords[cordOffset++]
+						if(first == "_") return 0
+						if(first == "~") return 1
+						if(first == "%") return 149932
+						if(first == "'") return -149932
+						if(first == "@") return fromLong(cords[cordOffset++]+cords[cordOffset++]+cords[cordOffset++]+cords[cordOffset++])
+						if(intChars.indexOf(first) != -1) return fromUInt(first+cords[cordOffset++])
+						return fromFloat(first+cords[cordOffset++]+cords[cordOffset++]) ;
+					}
+
+					function getColor(){
+						return getCord()?"rgb("+getCord()+","+getCord()+","+getCord()+")":"rgba("+getCord()+","+getCord()+","+getCord()+","+getCord()+")"
+					}
+
+					var canvas = document.createElement('canvas')
+					canvas.width = getCord()
+					canvas.height = getCord()
+					var ctx = canvas.getContext('2d')
+					var ctxStack = [ctx]
+
+					var fillObject;
+
+					for( var a=0;a<actions.length;a++){
+						var action = actions[a]
+						switch(action){
+							case "4":{
+								var newCanvas = document.createElement('canvas');
+								newCanvas.width = getCord()
+								newCanvas.height = getCord()
+
+								ctx = newCanvas.getContext('2d')
+								ctxStack.push(ctx)
+								break;
+							}
+
+							case "b":{
+								var pattern = ctx.createPattern(ctx.canvas, "no-repeat");
+								ctxStack.pop();
+								ctx = ctxStack[ctxStack.length-1]
+								ctx.fillStyle = pattern;
+
+								break;
+							}
+							case "t":{
+								fillObject = ctx.createLinearGradient(getCord(),getCord(),getCord(),getCord());
+								break;
+							}
+							case "D":{
+								fillObject = ctx.createRadialGradient(getCord(),getCord(),getCord(),getCord(),getCord(),getCord());
+								break;
+							}
+							case "8":{
+								fillObject.addColorStop(getCord(),getColor())
+								break;
+							}
+							case "F":{
+								ctx.fillStyle = fillObject
+								break;
+							}
+							case "f":{
+								ctx.save();
+								break;
+							}
+							case "/":{
+								ctx.bezierCurveTo(getCord(),getCord(),getCord(),getCord(),getCord(),getCord())
+								break;
+							}
+							case "p":{
+								ctx.strokeStyle = getColor()
+								break;
+							}
+							case "w":{
+								ctx.lineCap = "butt"
+								break;
+							}
+							case "y":{
+								ctx.lineJoin = "miter"
+								break;
+							}
+							case "9":{
+								ctx.miterLimit = getCord()
+								break;
+							}
+							case "6":{
+								ctx.fillStyle = getColor()
+								break;
+							}
+							case "n":{
+								ctx.beginPath()
+								break;
+							}
+							case "q":{
+								ctx.closePath()
+								break;
+							}
+							case "o":{
+								ctx.fill()
+								break;
+							}
+							case "P":{
+								ctx.stroke()
+								break;
+							}
+							case "r":{
+								ctx.restore()
+								break;
+							}
+							case "2":{
+								ctx.arc(getCord(),getCord(),getCord(),getCord(),getCord(),getCord()==1)
+								break;
+							}
+							case "m":{
+								ctx.moveTo(getCord(),getCord())
+								break;
+							}
+							case "l":{
+								ctx.lineTo(getCord(),getCord())
+								break;
+							}
+							case "5":{
+								ctx.quadraticCurveTo(getCord(),getCord(),getCord(),getCord())
+								break;
+							}
+							case "C":{
+								ctx.clip();
+								break;
+							}
+							case "E":{
+								ctx.lineWidth = getCord();
+								break;
+							}
+							case "A":{
+								ctx.transform(getCord(),getCord(),getCord(),getCord(),getCord(),getCord())
+								break;
+							}
+							case "u":{
+								ctx.translate(getCord(),getCord())
+								break;
+							}
+							case "V":{
+								ctx.scale(getCord(),getCord())
+								break;
+							}
+							case "0":{
+								ctx.rotate(getCord())
+								break;
+							}
+							case "K":{
+								ctx.globalAlpha = getCord()
+								break;
+							}
+							case "G":{
+								ctx.strokeStyle = fillObject;
+								break;
+							}
+
+							default:{
+								console.error("unhandled",action)
+							}
+						}
+					}
+
+					//console.log("More in buffer?",getCord(), getColor())
+
+					return canvas;
+
+				}
+
+				var canvas = getCanvasFromFRVRVector("6nmlllllllllllllmlllllll//llllml//llmllllllllllmlllllll//llllml//llo6nmllllllo6nmllo6nmllo6nmlllo6nmlllmllo6nmllo6nmllo6nmllo6nmlllo6nmllllo6nmlllo6nmlllo6nmlllo6nmlllo6nmlllo6nmllllo6nmllo6nmlllo6nmlllo6nmlllo6nmllo6nmllllo6nmllo6nmllllo6nmlllo6nmllllo6nmlllo6nmlllo6nmlllo6nmlllo6nmlllo6nmlllo6nmlllo6nm////m////m////lll//lllm/////lo","Iq7|s~(K)z<c)`|s<h|H<h{W=P{W=h{D=h`+<h`+<h^:=h^:=,^k=,^Z)[^Z)/^r)/|s>Y|s>9|H>9{a>{{a?*|s[U|s[h|V?5{S[K{E[i`+[i`Y[i^:[N^Z?B^Z>W^Z>D^r>D|s>Y|s>9^:?F^:?0^:?9`A?9`Y?9`3?t`*?F`*>9`*>9^:^M|s^h|d`m^Z`L^Z^5^3]{{$]Y^3[,^Z[p^Z]u|d]*|s{C|s{n|H{n{a{/{a|u|s|}|s}L|V|j{S|){E}M`+}M`Y}M^:|>^Z{&^Z{A^Z`-^r`-|s{C|s{n^:{.^:|e^:|n`A|n`Y|n`3|X`*{.`*{n`*{n^:~<h<g<n|U(]>4>n>{>P?9=w[D=W`N(0|H_~</(3(`=M?i=E]U>m?q~<+(2)N>4>n=M?i>m?q~)u)!)!>4>n|U(]{W=I>m?p~)C)R)O=E]U?F[g{W=I>m?p=M?i<I?k=E]U~_)1<h{W=I}^<W|U(]~)y)y)y|U(]+-5)F}^<W~<+(2)L{[<=}b>G}^<W~<X(q(]{[<=|U=N}^<W|e<$~)C)R)O||>}Ov6<(Gn6)9O.5(.}^<W~_)1<h<I?k)w?E)t?}=E]U~)u)!)!=E]U(.[3(T>()t?}~)J)})7):)])w?E)t?}(.=}~<h<g<n(T>(_==(.=})t?}~)y)y)y(W=[(>)0):)](.=}~)u)!)!Ov6<(Iq7<^:G7>K{,[H||>}~<9(b(|):)]=;=O)#<(~)C)R)O>Y).<r)9):)]=;=O~<h<g<n?9=w>{>P=;=O>Y).~_)1<h[D=W?9=w>Y).?d<m~_)u)>[q?o`H]W]V>}~<h<g<n:G7>KWF6?7`-[+`i[H{,[H~)y)y)yWF6?7|,[@`-[+~_)1<h`i[H]r>;]V>}`H]W`-[+~_<E<q|B]e`H]W`-[+|,[@~)u)!)!]$>7`|?={,[H`i[H]r>;~_)G)h]w?h[]?*[q?o]V>}~_)j<A^E?R]w?h]V>}]r>;~(3([)o^@?X^E?R]r>;]$>7~)Y<C)p>^>Q=y=L=;=O>{>P~<D<D<J?9=w>{>P>?>K?x=h~_)d)|[D=W?9=w?x=h?{=P~(;)k)B>{>P>^>Q>->F>?>K~(K)z<c}P^f}P^L}Q]|}u]|}<]|}<^J}<^f}<^w}<^+}u^+}Q^+}P^v}P^f}.^f}.^H}*^E}u^E}Z^E}V^H}V^f}V^y}Z^4}u^4}*^4}.^z}.^f}g^O}m^O}r^O}x^O}7^O}9^R}9^W}9^e}7^i}0^j}1^k}2^l}3^m}+^u}3^u}x^n}v^l}u^k}u^j}r^j}o^j}m^j}m^u}g^u}g^O}m^e}p^e}t^e}u^e}1^e}3^d}3^X}3^V}2^U}1^T}0^T}y^T}w^T}t^T}q^T}m^T}m^e")
+
+				var loadbar = document.createElement("loadbar")
+				var progressbar = document.createElement("div")
+
+				if(!isFBInstant){
+					preloader.appendChild(loadbar)
+					loadbar.appendChild(progressbar)
+					preloader.appendChild(canvas)
+				}
+
+				var ow = 0
+				var oh = 0
+				function handleResize(){
+					var w = document.documentElement.clientWidth;
+					var h = Math.min(window.innerHeight,document.documentElement.clientHeight);
+					if(ow!=w||oh!=h){
+						ow = w;oh = h;
+						var s = Math.min(w,h)*.8>>0
+						var nh = s*0.8187702265>>0
+						var t = ((h-nh*1.15)/2>>0)
+
+						loadbar.style.width = canvas.style.width = s+"px"
+						canvas.style.height = nh +"px"
+						loadbar.style.left = canvas.style.left = ((w-s)/2>>0)+"px"
+						canvas.style.top = t+"px"
+						loadbar.style.height = Math.max(Math.min((s/40>>0),10),4) + "px"
+						loadbar.style.top = (t + nh*1.05)+"px"
+					}
+				}
+				handleResize()
+
+				var completed = 0;
+				var preview = 0;
+				var facebookAPIInited = false;
+				var gameIsLoaded = false;
+				scope.htmlprogress = function(total, left){
+					completed = Math.max((left / total), completed)
+				}
+
+				var timer = setInterval(function(){
+					if(completed < .5){
+						completed += (.5-completed)/100
+					}
+					preview += (completed-preview)/5
+
+					if(isFBInstant && facebookAPIInited){
+						FBInstant.setLoadingProgress(preview*100>>0)
+					}else progressbar.style.width = (preview*100>>0) + "%"
+					handleResize();
+				},50)
+
+				setTimeout(function(){
+					loadbar.style.display = "block"
+				},500)
+
+				function handleFacebookLoaded(){
+					if(isFBInstant && facebookAPIInited && gameIsLoaded){
+						FBInstant.setLoadingProgress(100)
+						FBInstant.startGameAsync()
+						Host.emit('FBInstantComplete')
+					}
+				}
+
+				scope.htmlclean = function(){
+					gameIsLoaded = true;
+					handleFacebookLoaded()
+					clearInterval(timer)
+					document.body.removeChild(preloader)
+				}
+
+				scope.embeddedAssets = {};
+
+				scope.embedLoad = function(path,file){
+					scope.embeddedAssets[path] = file;
+				}
+
+				scope.loadAssets = function(files, svgCommands, data){
+					for( var a=0;a<files.length;a++){
+						var path = files[a]
+						var svg = svgCommands[a];
+						if(svg){
+							scope.embedLoad(path,[svg,data[a]])
+						}else{
+							scope.embedLoad(path, data[a])
+						}
+					}
+				}
+				var req = new XMLHttpRequest();
+				req.addEventListener('load', function(event){
+					var s = document.createElement("script");
+					//s.text rather than innerHTML for ie9
+					s.text = event.target.responseText;
+					document.documentElement.appendChild(s);
+				})
+
+				req.addEventListener("progress", function(event) {
+				    if (event.lengthComputable) {
+				    	htmlprogress(event.total, event.loaded)
+				    } else {
+				    	htmlprogress(scope.extsize||500000, event.loaded)
+				    }
+				}, false);
+
+				if(scope.spath !== undefined){
+					req.open("GET", spath);
+					req.send()
+				}
+
+				if(isFBInstant){
+					FBInstant.initializeAsync().then(function() {
+						facebookAPIInited = true
+						handleFacebookLoaded()
+					});
+				}
+
+			})(this)
+		</script>
+
+		<style>
+			*{
+				-webkit-touch-callout: none;
+			    -webkit-user-select: none;
+			    -khtml-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;
+			    user-select: none;
+			    touch-action: none;
+			    touch-callout: none;
+			}
+
+			#gameCanvas{
+				position: fixed;
+				top:0px;
+				left:0px;
+				width:0px;
+				height:0px;
+				background-color:#000000
+			}
+
+			#overlay{
+				position:absolute;
+				z-index:3;
+				left:50%;
+				margin-left:-70px;
+				visibility:hidden;
+				bottom:3px;
+				overflow:hidden;
+				text-align: center;
+			}
+
+			#overlay div{
+				float:left;
+			}
+
+			#overlay.cn {
+					margin-left: -190px;
+			}
+
+			/* Google+ share button */
+			#overlay.cn div#___plusone_0 {
+				width: 68px !important;
+			}
+
+			#overlay.cn div#___plusone_0 iframe {
+				position: relative !important;
+				top: -4px !important;
+			}
+
+			/* Sina Weibo share button */
+			#overlay wb\:share-button iframe {
+				width: 105px !important;
+			}
+
+			/* QZone share button */
+			#overlay iframe[version="1.0"] {
+				position: relative !important;
+				top: -2px;
+			}
+
+			@-ms-viewport{width:100%}
+
+			content{
+				background-color:#ffffff;
+				display: block;
+				padding:20px;
+				height:100%;
+				overflow:scroll;
+			}
+
+			content metadata{
+				float:right;
+				margin-left:10px;
+				text-align:center;
+			}
+
+			h1{
+				margin:0px;
+				font-weight:100;
+				font-size:50px;
+			}
+			a{
+				line-height:2em;
+			}
+			h3{
+				margin-bottom:0px;
+			}
+
+			@keyframes w{0%{transform:rotate(0deg);}20%{transform:rotate(-3deg) scale(1.4) translate(0px,-5px);}50%{transform:rotate(3deg) scale(1.4) translate(0px,-5px);}80%{transform:rotate(-3deg) scale(1.4) translate(0px,-5px);}100%{transform:rotate(0deg);}}
+			.w {animation:w 1.5s 1;}
+		</style>
+
+		<canvas id="gameCanvas"></canvas>
+		<script>
+			var cs = document.getElementById('gameCanvas').style;
+			cs.width = cs.height = "100%"
+		</script>
+
+		<div id="overlay"></div>
+
+		<content itemscope="" itemtype="https://schema.org/VideoGame">
+			<h1 itemprop="name">Hex FRVR</h1>
+			<meta itemprop="url" content="http://hex.frvr.com/">
+			<div itemprop="author" itemscope itemtype="http://schema.org/Organization">
+		    <p style="margin-top:0px"><span itemprop="name"><a itemprop="url" href="http://frvr.com/">By FRVR</a></span></p>
+		    </div>
+
+			<metadata>
+				<!--<img itemprop="image" src="" data-original="./v/1487402554874/i/web/icon196x196.png"/>-->
+				<meta itemprop="playMode" content="SinglePlayer">
+    		<p>Genre: <span itemprop="genre">Puzzle Game / Hexagon / Puzzle</span></p>
+				<div itemscope itemtype="http://schema.org/AggregateRating" itemprop="aggregateRating">
+					<div>Average Rating: <b itemprop="ratingValue">4.8</b>/<b itemprop="bestRating">5</b></div>
+					<meta itemprop="reviewCount" content="9427">
+				</div>
+				<link itemprop="applicationCategory" content="Game">
+				<link itemprop="applicationSubCategory" content="Board, Puzzle">
+				<span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+					<meta itemprop="price" content="$0">
+					<meta itemprop="priceCurrency" content="USD">
+					<link itemprop="availability" href="http://schema.org/InStock">
+				</span>
+				<meta itemprop="contentRating" content="Everyone">
+				<meta itemprop="playMode" content="SinglePlayer">
+			</metadata>
+
+			<p>Play the best free Hexagon Puzzle on your Computer, Tablet, Phone, iPad, iPhone, and iPod.</p>
+<p>Hex FRVR has been downloaded more than 1 Million times. Join the fun and play now!</p>
+<div itemprop="description">
+	<p>Hex FRVR is an easy to understand yet fun to master puzzle game. The unique hexagon puzzle board is a fun challenge for even the advanced puzzle addict.</p>
+	<p>Create and destroy full lines on the screen in any of the primary three directions by dragging and dropping blocks to the screen and get amazing combo bonuses by destroying multiple lines at the same time.</p>
+	<p>No time limit! A fun and relaxing puzzle game.</p>
+</div>
+<p>Hex FRVR features</p>
+<ul>
+	<li>Beautiful vibrant graphics.</li>
+	<li>High DPI and Retina support.</li>
+	<li>One click or tap play.</li>
+	<li>Smooth animations.</li>
+	<li>Great sound effects and music.</li>
+	<li>Works great on mobile devices with full iOS, Android and Windows Phone support.</li>
+	<li>No need to install anything, Hex FRVR is HTML5 that works without Flash or Java.</li>
+</ul>
+<p>What's new?</p>
+<ul>
+	<li>You can now choose between 10 beautiful themes!</li>
+	<li>Fixed issue where app would stop working when closed and re-opned.</li>
+	<li>Added link to download game music.</li>
+	<li>Tweaked gameplay to make it more fun.</li>
+	<li>Fixed many minor bugs.</li>
+</ul>
+<p>Hex FRVR is:</p>
+<ul>
+	<li>Easy to learn</li>
+	<li>Fun to master</li>
+	<li>Relaxing play</li>
+	<li>Smooth animations.</li>
+	<li>Great combos</li>
+	<li>Beautiful themes</li>
+</ul>
+
+<p>Hex is an easy to play hexagon puzzle game where your goal is to get the highest score possible!</p>
+
+			<p><a href=".">Please enable JavaScript to play now!</a></p>
+
+			<h2>More information</h2>
+			<ul>
+				<li><a href="//frvr.com/">FRVR Website</a></li>
+				<li><a href="http://news.frvr.com">FRVR News</a></li>
+				<li><a href="//twitter.com/frvrgames">FRVR on Twitter</a></li>
+				<li><a href="//www.facebook.com/frvrgames">FRVR on Facebook</a></li>
+				<li><a href="//plus.google.com/+Frvrgames">FRVR on Google+</a></li>
+			</ul>
+			<h2>More great games</h2>
+			<ul>
+
+				<li><a href="//solitaire.frvr.com/">Solitaire FRVR - Free Klondike Solitaire</a></li>
+
+				<li><a href="//lines.frvr.com/">Lines FRVR - Free Dots and Lines Puzzle Game</a></li>
+
+				<li><a href="//mahjong.frvr.com/">Mahjong FRVR - Free Mahjong Solitaire</a></li>
+
+			</ul>
+			<h2>More platforms</h2>
+			<ul>
+
+					<li><a href="https://itunes.apple.com/app/id1036010745">Play Hex FRVR on iPhone, iPad and iPod.</a></li>
+
+					<li><a href="https://play.google.com/store/apps/details?id=com.frvr.hex">Play Hex FRVR on Android phone and tablet.</a></li>
+
+					<li><a href="https://chrome.google.com/webstore/detail/hex-frvr/kibjffjfmagcmicpmogpieelngkcfggn">Play Hex FRVR in Google Chrome.</a></li>
+
+					<li><a href="http://www.amazon.com/FRVR-Hex/dp/B016R3WQK0/ref=sr_1_1?s=mobile-apps&ie=UTF8&qid=1445212785&sr=1-1&keywords=hex+frvr">Play Hex FRVR on Kindle</a></li>
+
+					<li><a href="https://www.facebook.com/games/hexfrvr/">Play Hex FRVR on Facebook.</a></li>
+
+			</ul>
+
+			<p><a href="//frvr.com/">Always get the greatest new games on frvr.com</a></p>
+		</content>
+
+		<script>
+
+			var frvrJSErrors = []
+			window.onerror = function(errorMsg, url, lineNumber) {
+				window.Host&&Host.Log&&Host.Log( "Javascript Error: " + url + ":" +lineNumber+" : " + errorMsg );
+			 	frvrJSErrors.push( [errorMsg, url, lineNumber] )
+				if(window.ga){
+					var errMsg = errorMsg;
+					var errSrc = url + ': ' + lineNumber;
+					ga('send', 'event', 'Hex JavaScript Error', errMsg, errSrc, { 'nonInteraction': 1 });
+				}
+				console.log("ERROR", errorMsg + " - " + url + " - " + lineNumber)
+			}
+
+			window.initGoogle = function(){
+				ga('create', 'UA-54081731-1', 'auto');
+				ga('require', 'displayfeatures');
+				ga('send', 'pageview', gaPath + location.search);
+			}
+		</script>
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();;a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga(function() {
+				setTimeout(function(){
+					window.location.hash = ""
+					if (window.history && window.history.replaceState instanceof Function) {
+			  			window.history.replaceState({}, document.title,'./');
+					}
+				},5000)
+			});
+		</script>
+		<script>
+ 			window.initGoogle();
+		</script>
+
+	</body>
+</html>
