@@ -8,7 +8,24 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <div id="gameStartModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Instruction</h4>
+        </div>
+        <div class="modal-body">
+          <p> Drag and drop shape to board. 3+ connected hexes will collapse. Click the shape to rotate.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"
+            id="startButton">Start</button>
+        </div>
+      </div>
 
+    </div>
+  </div>
   <h1>Score: <span id="score-value">0</span></h1>
   <canvas id="game" width="800px" height="600px"></canvas>
     <!-- Modal -->
