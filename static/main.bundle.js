@@ -1799,7 +1799,7 @@
 	const neighborOffsets = [[1, -1, 0], [-1, 1, 0], [0, 1, -1], [0, -1, 1], [-1, 0, 1], [1, 0, -1]];
 
 	function Board(context) {
-	  this.boardSize = 1;
+	  this.boardSize = 3;
 	  this.slots = [];
 
 	  for (var x = -this.boardSize; x <= this.boardSize; x++) {
