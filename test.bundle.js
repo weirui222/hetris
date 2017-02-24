@@ -1738,13 +1738,13 @@
 	      score += board.removeThreePlus(sameSlots[0].hex);
 	    } else {
 	      sameSlots[0].tile = undefined;
-	      neighborOffsets.forEach(offset => {
-	        let neighborHex = sameSlots[0].hex.add(new Hex(offset[0], offset[1], offset[2]));
-	        let slot = this.hexToSlot(neighborHex);
-	        // if (slot) {
-	        //   slot.tile = undefined;
-	        // }
-	      });
+	      // neighborOffsets.forEach(offset => {
+	      //   let neighborHex = sameSlots[0].hex.add(new Hex(offset[0],offset[1],offset[2]));
+	      //   let slot = this.hexToSlot(neighborHex);
+	      //   if (slot) {
+	      //      slot.tile = undefined;
+	      //   }
+	      // });
 	    }
 	    score += value * sameSlots.length;
 	    //console.log('score',score);
