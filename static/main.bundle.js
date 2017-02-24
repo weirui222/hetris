@@ -76,7 +76,7 @@
 
 	const shapesInWaitingBoxes = [
 	//{key: "first", bounds: [600, 700, 100, 200]},
-	{ key: "second", bounds: [140, 240, 350, 450] }];
+	{ key: "second", bounds: [140, 240, 400, 500] }];
 
 	var circleimg = new Image();
 	circleimg.src = "images/circle.png";
