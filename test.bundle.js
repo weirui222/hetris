@@ -1680,6 +1680,9 @@
 	      max = this.slots[i].tile.value;
 	    }
 	  }
+	  if (max === 7) {
+	    max = 6;
+	  }
 	  return max;
 	};
 	Board.prototype.addTilesFromShape = function (pixels, shape) {
@@ -1738,13 +1741,13 @@
 	      score += board.removeThreePlus(sameSlots[0].hex);
 	    } else {
 	      sameSlots[0].tile = undefined;
-	      // neighborOffsets.forEach(offset => {
-	      //   let neighborHex = sameSlots[0].hex.add(new Hex(offset[0],offset[1],offset[2]));
-	      //   let slot = this.hexToSlot(neighborHex);
-	      //   if (slot) {
-	      //      slot.tile = undefined;
-	      //   }
-	      // });
+	      neighborOffsets.forEach(offset => {
+	        let neighborHex = sameSlots[0].hex.add(new Hex(offset[0], offset[1], offset[2]));
+	        let slot = this.hexToSlot(neighborHex);
+	        if (slot) {
+	          slot.tile = undefined;
+	        }
+	      });
 	    }
 	    score += value * sameSlots.length;
 	    //console.log('score',score);
@@ -2012,10 +2015,12 @@
 
 	var image_width = hexHelper.size * 2 - 2;
 
-	const possibleShapes = [{
-	  shapeId: 1,
-	  coords: [[0, 0, 0]]
-	}, {
+	const possibleShapes = [
+	// {
+	//   shapeId: 1,
+	//   coords: [ [0,0,0] ],
+	// },
+	{
 	  shapeId: 2,
 	  coords: [[1, 0, -1], [0, 0, 0]]
 	}, {
@@ -2026,9 +2031,12 @@
 	  coords: [[0, 0, 0], [1, -1, 0]]
 	}];
 
-	function Shape(context, maxValue) {
+	function Shape(context, maxValue, desiredShape) {
 	  this._context = context;
-	  let shape = _.sample(possibleShapes);
+	  let shape = desiredShape;
+	  if (!shape) {
+	    shape = _.sample(possibleShapes);
+	  }
 	  this.shapeId = shape.shapeId;
 	  this.tiles = this.makeTilesFromCoords(shape, maxValue);
 	}
@@ -2057,6 +2065,10 @@
 	    ctx.drawImage(img, pixels.x, pixels.y, image_width * scale, image_width * scale);
 	  });
 	};
+
+	Shape.allPossible = possibleShapes.map(s => {
+	  return new Shape(null, 1, s);
+	});
 
 	module.exports = Shape;
 
