@@ -136,11 +136,14 @@
 	  requestAnimationFrame(gameLoop);
 	});
 
-	document.addEventListener('mousedown', function (event) {
+	function mousedownOrTouchstart(event) {
 	  mouseCoords = getMousePos(canvas, event);
 	  isMouseDown = true;
 	  shapeInHand = whichShapeDidYouPick();
-	});
+	}
+
+	document.addEventListener('mousedown', mousedownOrTouchstart);
+	document.addEventListener('touchstart', mousedownOrTouchstart);
 
 	document.getElementById('submit').addEventListener('submit', function (event) {
 	  event.preventDefault();
@@ -170,7 +173,7 @@
 	  $("#rank").show();
 	});
 
-	document.addEventListener('mouseup', function (event) {
+	function mouseupOrTouchend(event) {
 	  pixels = hexHelper.subVector2(mouseCoords, hexHelper.boardOffset);
 	  if (shapeInHand && board.validDrop(pixels, shapeInHand)) {
 	    let hexes = board.addTilesFromShape(pixels, shapeInHand);
@@ -194,16 +197,24 @@
 	  }
 	  isMouseDown = false;
 	  shapeInHand = null;
-	});
+	};
 
-	document.addEventListener('mousemove', function (event) {
+	document.addEventListener('mouseup', mouseupOrTouchend);
+	document.addEventListener('touchend', mouseupOrTouchend);
+
+	function mousemoveOrTouchmove(event) {
 	  if (isMouseDown) {
 	    mouseCoords = getMousePos(canvas, event);
 	  }
-	});
+	}
+
+	document.addEventListener('mousemove', mousemoveOrTouchmove);
+	document.addEventListener('touchmove', mousemoveOrTouchmove);
+
 	$(document).ready(function (event) {
 	  $('#gameStartModal').modal('show');
 	});
+
 	document.getElementById('restartButton').addEventListener('click', function (event) {
 	  shapesInWaiting.second = new Shape(ctx, 2);
 	  board.clear();
@@ -211,7 +222,7 @@
 	  $("#rank").hide();
 	});
 
-	document.addEventListener('click', function (event) {
+	function clickOr(event) {
 	  let bounds = shapesInWaitingBoxes[0].bounds;
 	  if (mouseCoords.x > bounds[0] && mouseCoords.x < bounds[1] && mouseCoords.y > bounds[2] && mouseCoords.y < bounds[3]) {
 	    let shape = shapesInWaiting[shapeFrom];
@@ -221,7 +232,9 @@
 	      shape.tiles[1].tile = temp;
 	    }
 	  }
-	});
+	}
+
+	document.addEventListener('click', clickOr);
 
 	function getMousePos(canvas, evt) {
 	  var rect = canvas.getBoundingClientRect();
