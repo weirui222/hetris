@@ -137,6 +137,7 @@
 	});
 
 	function mousedownOrTouchstart(event) {
+	  console.log('start', event);
 	  mouseCoords = getMousePos(canvas, event);
 	  isMouseDown = true;
 	  shapeInHand = whichShapeDidYouPick();
@@ -174,6 +175,7 @@
 	});
 
 	function mouseupOrTouchend(event) {
+	  console.log('end', event);
 	  pixels = hexHelper.subVector2(mouseCoords, hexHelper.boardOffset);
 	  if (shapeInHand && board.validDrop(pixels, shapeInHand)) {
 	    let hexes = board.addTilesFromShape(pixels, shapeInHand);
@@ -203,6 +205,7 @@
 	document.addEventListener('touchend', mouseupOrTouchend);
 
 	function mousemoveOrTouchmove(event) {
+	  console.log('move', event);
 	  if (isMouseDown) {
 	    mouseCoords = getMousePos(canvas, event);
 	  }
@@ -238,10 +241,17 @@
 
 	function getMousePos(canvas, evt) {
 	  var rect = canvas.getBoundingClientRect();
-	  return {
-	    x: evt.clientX - rect.left,
-	    y: evt.clientY - rect.top
-	  };
+	  if (evt.type.startsWith('touch')) {
+	    return {
+	      x: evt.touches[0].clientX - rect.left,
+	      y: evt.touches[0].clientY - rect.top
+	    };
+	  } else {
+	    return {
+	      x: evt.clientX - rect.left,
+	      y: evt.clientY - rect.top
+	    };
+	  }
 	}
 
 /***/ },
